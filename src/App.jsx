@@ -10,6 +10,9 @@ import './App.css';
 function App() {
     return (
         <div className="App">
+          <div className="screen screen1">מסך 1</div>
+      <div className="screen screen2">מסך 2</div>
+      <div className="screen screen3">מסך 3</div>
             {/* <Header className="header-fixed" />
             <Routes>
                   <Route path="/home" element={<Home className="home" />} />
