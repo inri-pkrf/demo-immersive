@@ -1,0 +1,116 @@
+.hamburger-icon {
+    position: absolute;
+    top: 2vh;
+    left: 2vw;
+    width: 170px;        /* רוחב קבוע ומוגדל */
+    height: 120px;       /* גובה מוגדל */
+    z-index: 1001;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* ייצור רווח שווה בין הקווים */
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+  
+.hamburger-icon:hover {
+    transform: scale(1.1);
+}
+  
+.hamburger-line {
+    width: 100%; /* יתפוס את כל הרוחב של .hamburger-icon */
+    height: 20px; /* עבה יותר ממקורית */
+    background-color: black;
+    border-radius: 6px; /* יותר עגול */
+    transition: transform 0.4s ease, opacity 0.4s ease, background-color 0.4s ease;
+}
+
+  
+  /* קווים במצב פתוח */
+  .hamburger-line.open:nth-child(1) {
+    background-color: white;
+    transform: rotate(45deg) translate(7px, 7px);
+  }
+  
+  .hamburger-line.open:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger-line.open:nth-child(3) {
+    background-color: white;
+    transform: rotate(-45deg) translate(49px, -57px)
+  }
+  
+  /* תפריט */
+  .menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10vw;
+    max-width: 3840px; /* לא לעבור את המסך הראשון */
+    height: 40vh;
+    background-color: #111;
+    z-index: 1000;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    box-shadow: 4px 0 12px rgba(0, 0, 0, 0.4);
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+        overflow: hidden;
+  }
+  
+  
+  /* מצבים */
+  .menu.open {
+    transform: translateX(0);
+  }
+  
+  .menu.close {
+    transform: translateX(-100%);
+  }
+  
+  /* רשימת תפריט */
+  .menu-list {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    margin: 0;
+  }
+  
+  .menu-list li {
+    color: white;
+    margin: 2vh 0;
+    padding: 1.5vh 0;
+    text-align: center;
+    font-size: 6em;
+    font-family: "Heebo", Arial, sans-serif;
+    transition: background-color 0.3s ease;
+    border-bottom: 1px solid rgb(255, 255, 255);
+  }
+  
+  .menu-list li:hover {
+    background-color: #1e88e5; /* תכלת מודרני */
+    cursor: pointer;
+  }
+  
+ 
+  
+  #linkMenu {
+    color: white;
+    text-decoration: none;
+  }
+  
+  /* "בוחן" שלא פעיל */
+  .fade {
+    opacity: 0.4;
+  }
+  
+  li.fade {
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+  

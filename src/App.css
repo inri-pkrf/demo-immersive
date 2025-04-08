@@ -12,6 +12,8 @@ body {
 
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&family=Karantina:wght@300;400;700&display=swap');
+
 
 
 .screen {
@@ -20,20 +22,22 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 48px;
+  font-size:7em;
   color: white;
   box-sizing: border-box;
-  border-right: 4px solid white;
+  border-right: 4px solid rgb(0, 0, 0);
 }
-
 .screen1 {
-  background-color: #e57373; /* אדום בהיר */
+  background-color: #f0f0f0; /* אפור בהיר */
+  border-right: 4px solid #dcdcdc; /* גבול אפור בינוני */
 }
 
 .screen2 {
-  background-color: #81c784; /* ירוק בהיר */
+  background-color: #807f7f; /* אפור בינוני */
+  border-right: 4px solid #b0b0b0; /* גבול אפור כהה יותר */
 }
 
 .screen3 {
-  background-color: #64b5f6; /* כחול בהיר */
+  background-color: #d0d0d0; /* אפור כהה יותר */
+  border-right: 4px solid #8c8c8c; /* גבול אפור כהה */
 }
