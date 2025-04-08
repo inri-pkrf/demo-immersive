@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import '../ComponentsCSS/Drag.css';
 
 const initialButtons = [
-    { id: 1, label: '  מסך 1גרירה', x: 400, y: 600, screen: 1, color: '#ff9bb2', targetZoneId: 1 },
-    { id: 2, label: ' ממסך 1 ל3 גרירה', x: 2000, y: 1500, screen: 1, color: '#b3e6b3', targetZoneId: 2 },
-    { id: 3, label: "גרירה מבין מסך לאחר", x: 3600, y: 600, screen: 2, color: '#ffb3a7', targetZoneId: 3 },
-    { id: 4, label: 'גרירה מ2 ל3', x: 5000, y: 1400, screen: 2, color: '#c1a8e2', targetZoneId: 4 },
-    { id: 5, label: ' גרירה מ3 ל2', x: 8000, y: 1000, screen: 3, color: '#a0c9e3', targetZoneId: 5 },
-    { id: 6, label: 'גרירה מ3 ל1', x: 10400, y: 300, screen: 3, color: '#ffc382', targetZoneId: 6 },
-  ];
+  { id: 1, label: 'מסך 1 גרירה', x: 400, y: 600, screen: 1, color: '#ff9bb2', targetZoneId: 1 },
+  { id: 2, label: 'ממסך 1 ל3 גרירה', x: 2000, y: 1500, screen: 1, color: '#b3e6b3', targetZoneId: 2 },
+  { id: 3, label: 'גרירה מבין מסך לאחר', x: 3600, y: 600, screen: 2, color: '#ffb3a7', targetZoneId: 3 },
+  { id: 4, label: 'גרירה מ2 ל3', x: 5000, y: 1400, screen: 2, color: '#c1a8e2', targetZoneId: 4 },
+  { id: 5, label: 'גרירה מ3 ל2', x: 8000, y: 1000, screen: 3, color: '#a0c9e3', targetZoneId: 5 },
+  { id: 6, label: 'גרירה מ3 ל1', x: 10400, y: 300, screen: 3, color: '#ffc382', targetZoneId: 6 },
+];
 
 const dropZones = [
   { id: 1, screen: 1, x: 2000, y: 700, color: '#ff9bb2', width: 730, height: 290 },
@@ -43,23 +43,42 @@ const Drag = () => {
   const buttonWidth = 750;
   const buttonHeight = 290;
 
-  const handleMouseDown = (e, id) => {
+  // תמיכה בגרירה עם עכבר ו-touch
+  const handleStart = (e, id) => {
     const btn = buttons.find(b => b.id === id);
-    setDraggingId(id);
-    setOffset({
-      x: e.clientX - btn.x,
-      y: e.clientY - btn.y,
-    });
+
+    if (!btn) {
+      console.error('Button not found');
+      return;
+    }
+
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+    // אם המגע הוא בתוך גבולות הכפתור
+    if (
+      clientX >= btn.x && clientX <= btn.x + buttonWidth &&
+      clientY >= btn.y && clientY <= btn.y + buttonHeight
+    ) {
+      setDraggingId(id);
+      setOffset({
+        x: clientX - btn.x,
+        y: clientY - btn.y,
+      });
+    }
   };
 
-  const handleMouseMove = (e) => {
+  const handleMove = (e) => {
     if (draggingId !== null) {
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
       const newButtons = buttons.map(btn => {
         if (btn.id === draggingId) {
           return {
             ...btn,
-            x: e.clientX - offset.x,
-            y: e.clientY - offset.y,
+            x: clientX - offset.x,
+            y: clientY - offset.y,
           };
         }
         return btn;
@@ -68,7 +87,7 @@ const Drag = () => {
     }
   };
 
-  const handleMouseUp = () => {
+  const handleEnd = () => {
     if (draggingId !== null) {
       const button = buttons.find(btn => btn.id === draggingId);
 
@@ -81,7 +100,6 @@ const Drag = () => {
           button.y + buttonHeight > zone.y
         );
         return isTarget && isOverlap;
-      
       });
 
       if (targetDropZone) {
@@ -113,18 +131,30 @@ const Drag = () => {
     }
   };
 
+  const handleTouchStart = (e) => {
+    const target = e.target;
+    if (target.classList.contains('drag-div')) { // בודק אם היעד של המגע הוא כפתור
+      const btnId = target.id; // מקבל את ה-ID של הכפתור
+      handleStart(e, parseInt(btnId)); // מעביר את ה-ID לפונקציה handleStart
+    }
+  };
   return (
     <div
       className="drag-container"
-      onMouseMove={handleMouseMove}
-      onMouseUp={handleMouseUp}
-      onMouseLeave={handleMouseUp}
+      onMouseMove={handleMove}
+      onMouseUp={handleEnd}
+      onMouseLeave={handleEnd}
+      onTouchMove={handleMove}
+      onTouchEnd={handleEnd}
+      onTouchStart={handleTouchStart} // הוספת touchstart
     >
       {buttons.map(btn => (
         <div
           key={btn.id}
+          id={btn.id}
           className="drag-div"
-          onMouseDown={(e) => handleMouseDown(e, btn.id)}
+          onMouseDown={(e) => handleStart(e, btn.id)}
+          onTouchStart={handleTouchStart} // הוספת touchstart
           style={{
             position: 'absolute',
             left: `${btn.x}px`,
@@ -143,7 +173,6 @@ const Drag = () => {
           {btn.label}
         </div>
       ))}
-
       {dropZones.map(zone => (
         <DropZone
           key={zone.id}
