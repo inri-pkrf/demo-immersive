@@ -1,0 +1,58 @@
+.timeline-container {
+    display: flex;
+    justify-content: center; /* מרכז אופקי */
+    justify-content: space-between; /* מרכז אופקי */
+    align-items: center; /* מרכז אנכי */
+    flex-wrap: wrap;
+    position: absolute;
+    width: 10000px;
+    height: 2160px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+  
+.timeline-circle {
+    background: #ffd6e8;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    font-family: "HEEBO";
+    width: 250px;
+    height: 350px;
+    font-size: 10em; 
+    position: relative; /* הוספתי את זה */
+}
+
+.timeline-circle.active {
+    transform: scale(1.7);
+    background: #53ddff;
+    z-index: 5; /* כדי שיהיה מעל אחרים */
+}
+.timeline-text {
+    top: 300px; /* מרחק מהעיגול */
+    font-size: 100px; /* גודל טקסט יותר גדול */
+    color: #333; /* צבע כהה לעוד ניגודיות */
+    background: #53ddff; /* צבע רקע */
+    border-radius: 20px; /* קצוות מעוגלים */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* צל רך */
+    transition: all 0.3s ease;
+    max-width: 90%; /* רוחב מקסימלי 90% מהמסך */
+    width: 100%; /* שליטה מלאה ברוחב */
+    height: auto; /* גובה אוטומטי לפי התוכן */
+    padding: 20px 30px; /* ריווח פנימי רחב יותר */
+    text-align: center; /* מרכז את הטקסט */
+    position: relative; 
+    margin: 0 auto;
+    display: block; 
+  }
+  
+  

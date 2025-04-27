@@ -12,7 +12,6 @@ const Hamburger = () => {
 
   const subjects = [
     { name: ' גרירה', path: '/drag' },
-    { name: 'לחיצה ונפתחת תיבת טקסט', path: '/textBoxOpen' },
     { name: 'ציר זמן', path: '/timeLine' },
     { name: 'מסך שמאלי בלבד', path: '/leftScreen', external: true },
   ];

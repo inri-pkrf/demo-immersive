@@ -6,6 +6,7 @@ import { TouchBackend } from 'react-dnd-touch-backend'; // הוספת התמיכ
 
 import Hamburger from './ComponentsJS/Hamburger';
 import Drag from './ComponentsJS/Drag';
+import TimeLine from './ComponentsJS/TimeLine';
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
             
             <Routes>
                 <Route path="/drag" element={<Drag />} />
+                <Route path="/timeLine" element={<TimeLine />} />
             </Routes> 
         </div>
     );
