@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/demo-immersive/static/css/main.1a9c31de.css",
+    "main.css": "/demo-immersive/static/css/main.eaa6276a.css",
     "main.js": "/demo-immersive/static/js/main.c86c344a.js",
     "static/js/453.3f026b27.chunk.js": "/demo-immersive/static/js/453.3f026b27.chunk.js",
     "index.html": "/demo-immersive/index.html",
-    "main.1a9c31de.css.map": "/demo-immersive/static/css/main.1a9c31de.css.map",
+    "main.eaa6276a.css.map": "/demo-immersive/static/css/main.eaa6276a.css.map",
     "main.c86c344a.js.map": "/demo-immersive/static/js/main.c86c344a.js.map",
     "453.3f026b27.chunk.js.map": "/demo-immersive/static/js/453.3f026b27.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1a9c31de.css",
+    "static/css/main.eaa6276a.css",
     "static/js/main.c86c344a.js"
   ]
 }
