@@ -14,6 +14,8 @@ const Hamburger = () => {
     { name: ' גרירה', path: '/drag' },
     { name: 'ציר זמן', path: '/timeLine' },
     { name: 'מסך שמאלי בלבד', path: '/leftScreen', external: true },
+    { name: 'אפקטים קוליים', path: '/voiceEffect', external: true },
+    { name: 'מפת התמצאות', path: '/mapMatch', external: true },
   ];
 
   useEffect(() => {

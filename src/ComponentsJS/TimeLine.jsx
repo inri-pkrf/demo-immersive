@@ -10,7 +10,7 @@ const TimeLine = () => {
 
   const circles = Array.from({ length: 12 }, (_, i) => ({
     id: i,
-    size: Math.floor(Math.random() * 60) + 300, // גודל רנדומלי בין 80 ל-140
+    size: Math.floor(Math.random() * 60) + 300, // גודל רנדומלי בין 300 ל-360
   }));
 
   return (
@@ -25,7 +25,7 @@ const TimeLine = () => {
             {index + 1}
           </div>
           {activeIndex === index && (
-            <div className="timeline-text">
+            <div className={`timeline-text ${index % 2 === 0 ? 'even' : 'odd'}`}>
               טקסט {index + 1}
             </div>
           )}

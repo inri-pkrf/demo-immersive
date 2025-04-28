@@ -37,8 +37,26 @@
     background: #53ddff;
     z-index: 5; /* כדי שיהיה מעל אחרים */
 }
-.timeline-text {
+.timeline-text.even {
     top: 300px; /* מרחק מהעיגול */
+    font-size: 100px; /* גודל טקסט יותר גדול */
+    color: #333; /* צבע כהה לעוד ניגודיות */
+    background: #53ddff; /* צבע רקע */
+    border-radius: 20px; /* קצוות מעוגלים */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* צל רך */
+    transition: all 0.3s ease;
+    max-width: 90%; /* רוחב מקסימלי 90% מהמסך */
+    width: 100%; /* שליטה מלאה ברוחב */
+    height: auto; /* גובה אוטומטי לפי התוכן */
+    padding: 20px 30px; /* ריווח פנימי רחב יותר */
+    text-align: center; /* מרכז את הטקסט */
+    position: relative; 
+    margin: 0 auto;
+    display: block; 
+  }
+  
+.timeline-text.odd {
+    top: -700px; /* מרחק מהעיגול */
     font-size: 100px; /* גודל טקסט יותר גדול */
     color: #333; /* צבע כהה לעוד ניגודיות */
     background: #53ddff; /* צבע רקע */
