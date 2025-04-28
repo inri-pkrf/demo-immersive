@@ -48,7 +48,7 @@
     left: 0;
     width: 10vw;
     max-width: 3840px; /* לא לעבור את המסך הראשון */
-    height: 40vh;
+    height: 50vh;
     background-color: #111;
     z-index: 1000;
     padding-left: 5vw;
