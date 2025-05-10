@@ -41,3 +41,10 @@ body {
   background-color: #d0d0d0; /* אפור כהה יותר */
   border-right: 4px solid #8c8c8c; /* גבול אפור כהה */
 }
+.App.full {
+  width: 11520px;
+}
+
+.App.single {
+  width: 3840px;
+}
